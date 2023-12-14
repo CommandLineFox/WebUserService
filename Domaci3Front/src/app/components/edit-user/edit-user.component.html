@@ -1,0 +1,28 @@
+<div>
+  <h2>Edit User</h2>
+  <form (submit)="onSubmit()">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" [(ngModel)]="editedUser.firstName" required>
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" [(ngModel)]="editedUser.lastName" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" [(ngModel)]="editedUser.mail" required>
+
+    <!-- Add input fields for permissions -->
+    <label for="readPermission">Read Permission:</label>
+    <input type="checkbox" id="readPermission" name="readPermission" [(ngModel)]="editedUser.readUserPermission">
+
+    <label for="createPermission">Create Permission:</label>
+    <input type="checkbox" id="createPermission" name="createPermission" [(ngModel)]="editedUser.createUserPermission">
+
+    <label for="updatePermission">Update Permission:</label>
+    <input type="checkbox" id="updatePermission" name="updatePermission" [(ngModel)]="editedUser.updateUserPermission">
+
+    <label for="deletePermission">Delete Permission:</label>
+    <input type="checkbox" id="deletePermission" name="deletePermission" [(ngModel)]="editedUser.deleteUserPermission">
+
+    <button type="submit">Save Changes</button>
+  </form>
+</div>
