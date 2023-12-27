@@ -1,0 +1,36 @@
+<div *ngIf="permissions.ROLE_READ">
+    <h2>User List</h2>
+    <button *ngIf="permissions.ROLE_ADD" (click)="navigateToAddUser()">Add New User</button>
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Read Permission</th>
+                <th>Create Permission</th>
+                <th>Update Permission</th>
+                <th>Delete Permission</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{ user.firstName }}</td>
+                <td>{{ user.lastName }}</td>
+                <td (click)="navigateToEditUser(user.userId)" [class.clickable]="permissions.ROLE_UPDATE">{{ user.mail
+                    }}</td>
+                <td>{{ user.readUserPermission ? 'Yes' : 'No' }}</td>
+                <td>{{ user.createUserPermission ? 'Yes' : 'No' }}</td>
+                <td>{{ user.updateUserPermission ? 'Yes' : 'No' }}</td>
+                <td>{{ user.deleteUserPermission ? 'Yes' : 'No' }}</td>
+                <td>
+                    <button *ngIf="permissions.ROLE_DELETE" (click)="deleteUser(user.userId)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div *ngIf="!permissions.ROLE_READ">
+    <p>You don't have permission to view users.</p>
+</div>

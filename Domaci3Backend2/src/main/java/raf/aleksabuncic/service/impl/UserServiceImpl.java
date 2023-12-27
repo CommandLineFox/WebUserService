@@ -43,7 +43,6 @@ public class UserServiceImpl implements UserService {
         if (users.isEmpty()) {
             User user = userMapper.createUserDtoToUser(createUserDto);
             userRepository.save(user);
-            System.out.println("Dodadto");
             UserDto userDto = userMapper.userToUserDto(user);
             /*SendNotificationDto sendNotificationDto = new SendNotificationDto();
             sendNotificationDto.setFirstName(user.getFirstName());
@@ -64,6 +63,11 @@ public class UserServiceImpl implements UserService {
             userDtos.add(userMapper.userToUserDto(user));
         }
         return userDtos;
+    }
+
+    public UserDto findUser(int id) {
+        User user = userRepository.findByUserId(id);
+        return userMapper.userToUserDto(user);
     }
 
     @Override

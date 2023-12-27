@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping
+@CrossOrigin(origins = "http://localhost:4200")
 public class Controller {
     private final UserService userService;
 
@@ -21,11 +22,16 @@ public class Controller {
         this.userService = userService;
     }
 
+    @GetMapping("/user/get/{id}")
+    @CheckSecurity(roles = {"ROLE_READ"})
+    public ResponseEntity<UserDto> findUser(@RequestHeader("Authorization") String authorization, @PathVariable(value = "id") int id) {
+        return new ResponseEntity<>(userService.findUser(id), HttpStatus.OK);
+    }
+
     @GetMapping("/user/list")
     @CheckSecurity(roles = {"ROLE_READ"})
-    public ResponseEntity<List<UserDto>> listUsers() {
-
-        return null;
+    public ResponseEntity<List<UserDto>> listUsers(@RequestHeader("Authorization") String authorization) {
+        return new ResponseEntity<>(userService.findUsers(), HttpStatus.OK);
     }
 
     @PostMapping("/user/add")
@@ -46,7 +52,7 @@ public class Controller {
 
     @PostMapping("/user/update")
     @CheckSecurity(roles = {"ROLE_UPDATE"})
-    public ResponseEntity<UserDto> updateUser(@RequestBody UserDto userDto) {
+    public ResponseEntity<UserDto> updateUser(@RequestHeader("Authorization") String authorization, @RequestBody UserDto userDto) {
         return new ResponseEntity<>(userService.updateUser(userDto), HttpStatus.OK);
     }
 

@@ -8,9 +8,9 @@ import raf.aleksabuncic.dto.UserDto;
 @Component
 public class UserMapper {
     public UserDto userToUserDto(User user) {
-
         UserDto userDto = new UserDto();
 
+        userDto.setUserId(user.getUserId());
         userDto.setFirstName(user.getFirstName());
         userDto.setLastName(user.getLastName());
         userDto.setMail(user.getMail());

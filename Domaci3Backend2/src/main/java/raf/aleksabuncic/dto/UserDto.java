@@ -1,7 +1,7 @@
 package raf.aleksabuncic.dto;
 
 public class UserDto {
-    private int userId;
+    private Integer userId;
     private String firstName;
     private String lastName;
     private String mail;
@@ -12,7 +12,7 @@ public class UserDto {
     private Integer updateUserPermission;
     private Integer deleteUserPermission;
 
-    public int getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 

@@ -8,6 +8,8 @@ import raf.aleksabuncic.dto.UserDto;
 import java.util.List;
 
 public interface UserService {
+    UserDto findUser(int id);
+
     List<UserDto> findUsers();
 
     UserDto addUser(CreateUserDto createUserDto);

@@ -10,7 +10,7 @@ import raf.aleksabuncic.security.service.TokenService;
 @Service
 public class TokenServiceImpl implements TokenService {
     @Value("${oauth.jwt.secret}")
-    private String jwtSecret;
+    private String jwtSecret = "secret_key";
 
     @Override
     public String generate(Claims claims) {
@@ -23,6 +23,7 @@ public class TokenServiceImpl implements TokenService {
         try {
             claims = Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(jwt).getBody();
         } catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
         return claims;

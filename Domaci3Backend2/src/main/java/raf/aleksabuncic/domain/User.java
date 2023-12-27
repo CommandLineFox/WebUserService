@@ -9,7 +9,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "UserId")
-    private int userId;
+    private Integer userId;
 
     private String firstName;
     private String lastName;
@@ -21,7 +21,7 @@ public class User {
     private Integer updateUserPermission;
     private Integer deleteUserPermission;
 
-    public int getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 

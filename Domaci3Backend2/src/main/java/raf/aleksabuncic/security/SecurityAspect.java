@@ -19,8 +19,6 @@ import java.util.Arrays;
 @Aspect
 @Configuration
 public class SecurityAspect {
-    @Value("${oauth.jwt.secret}")
-    private String jwtSecret;
     private final TokenService tokenService = new TokenServiceImpl();
 
     public SecurityAspect() {
